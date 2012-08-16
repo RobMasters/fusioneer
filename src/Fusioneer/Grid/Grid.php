@@ -103,7 +103,7 @@ class Grid implements GridInterface
      */
     public function contains($value, $direction)
     {
-        $chars = str_split($value);
+        $chars = array_filter(str_split(trim($value)));
 
         switch ($direction) {
             case self::DIRECTION_HORIZONTAL:

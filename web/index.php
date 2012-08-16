@@ -28,7 +28,7 @@ $app->get('/', function() use ($app) {
     $grid
         ->setWidth(5)
         ->setHeight(5)
-        ->populate(new RandomLetterPopulator(range('a', 'z')))
+        ->populate(new RandomLetterPopulator(range('A', 'Z')))
     ;
 
     $wordFinder = new WordFinder($grid);
