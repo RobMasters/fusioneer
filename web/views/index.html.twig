@@ -16,11 +16,14 @@
     {% block results %}
         <h1>Results</h1>
 
-        <ul>
-        {% for result in results %}
-            <li>{{ result }}</li>
+        {% for direction, directionResults in results %}
+            <h2>{{ direction }}</h2>
+            <ul>
+                {% for result in directionResults %}
+                    <li>{{ result }}</li>
+                {% endfor %}
+            </ul>
         {% endfor %}
-        </ul>
     {% endblock %}
 
 {% endblock %}

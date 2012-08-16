@@ -159,6 +159,28 @@ class Grid implements GridInterface
      */
     private function containsVertical(array $chars)
     {
+        if (count($chars) <= $this->height) {
+            $currentCharIndex = 0;
+
+            for ($i = 0; $i <= $this->height; $i++) {
+                for ($j = 0; $j <= $this->width; $j++) {
+                    if ($this->cells[$j][$i] === $chars[$currentCharIndex]) {
+                        $currentCharIndex++;
+
+                        if ($currentCharIndex === count($chars)) {
+                            // Word found!
+                            return true;
+                        }
+                    } else {
+                        $currentCharIndex = 0;
+                        if (count($chars) > ($this->height + $i)) {
+                            // Not enough space in the row. Move to the next
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
         return false;
     }

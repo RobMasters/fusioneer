@@ -47,15 +47,21 @@ class WordFinder
      */
     public function getResults()
     {
-        $matches = array();
+        $horizontalMatches = $verticalMatches = array();
 
         foreach ($this->words as $word) {
             if ($this->grid->contains($word, GridInterface::DIRECTION_HORIZONTAL)) {
-                $matches[] = $word;
+                $horizontalMatches[] = $word;
+            }
+            if ($this->grid->contains($word, GridInterface::DIRECTION_VERTICAL)) {
+                $verticalMatches[] = $word;
             }
         }
 
-        return $matches;
+        return array(
+            'Horizontal' => $horizontalMatches,
+            'Vertical' => $verticalMatches
+        );
     }
 }
  
