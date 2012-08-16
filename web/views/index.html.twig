@@ -4,15 +4,23 @@
     {% block grid %}
         <h1>Grid</h1>
 
-        Todo: render the grid...
+        {% for y, row in grid.cells %}
+            <div id="row-{{ y }}">
+                {% for x, value in row %}
+                    <span id="cell-{{ y }}-{{ x }}">{{ value }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
     {% endblock %}
 
     {% block results %}
         <h1>Results</h1>
 
+        <ul>
         {% for result in results %}
-
+            <li>{{ result }}</li>
         {% endfor %}
+        </ul>
     {% endblock %}
 
 {% endblock %}

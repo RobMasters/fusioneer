@@ -6,6 +6,9 @@ use Fusioneer\Populator\PopulatorInterface;
 
 interface GridInterface
 {
+    const DIRECTION_VERTICAL = 'v';
+    const DIRECTION_HORIZONTAL = 'h';
+
     /**
      * @abstract
      * @param $width
@@ -25,5 +28,19 @@ interface GridInterface
      * @param \Fusioneer\Populator\PopulatorInterface $populator
      * @return GridInterface
      */
-    public function setPopulator(PopulatorInterface $populator);
+    public function populate(PopulatorInterface $populator);
+
+    /**
+     * @abstract
+     * @return array
+     */
+    public function getCells();
+
+    /**
+     * @abstract
+     * @param $value
+     * @param $direction
+     * @return boolean
+     */
+    public function contains($value, $direction);
 }

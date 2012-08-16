@@ -9,12 +9,16 @@ class RandomLetterPopulator implements PopulatorInterface
      */
     protected $range;
 
-    public function construct()
+    /**
+     *
+     */
+    public function __construct(array $letters)
     {
-        $this->range = range('a', 'z');
+        $this->range = $letters;
     }
 
     /**
+     * @throws \RuntimeException
      * @return mixed
      */
     public function load()

@@ -4,6 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Fusioneer\Grid\Grid;
 use Fusioneer\Populator\RandomLetterPopulator;
+use Fusioneer\WordFinder;
 
 $app = new Silex\Application();
 
@@ -22,14 +23,21 @@ $app->get('/hello', function() {
 
 
 $app->get('/', function() use ($app) {
+
     $grid = new Grid();
     $grid
         ->setWidth(5)
         ->setHeight(5)
-        ->setPopulator(new RandomLetterPopulator())
+        ->populate(new RandomLetterPopulator(range('a', 'z')))
     ;
 
-    return $app['twig']->render('index.html.twig', array('grid' => $grid));
+    $wordFinder = new WordFinder($grid);
+    $wordFinder->loadDictionary(__DIR__ . '/../dictionary.txt');
+
+    return $app['twig']->render('index.html.twig', array(
+        'grid' => $grid,
+        'results' => $wordFinder->getResults()
+    ));
 });
 
 $app->run();
