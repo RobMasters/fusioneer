@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {% block grid %}
+        <h1>Grid</h1>
+
+        Todo: render the grid...
+    {% endblock %}
+
+    {% block results %}
+        <h1>Results</h1>
+
+        {% for result in results %}
+
+        {% endfor %}
+    {% endblock %}
+
+{% endblock %}
+

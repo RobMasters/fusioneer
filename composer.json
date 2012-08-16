@@ -1,0 +1,11 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "silex/silex": "1.0.*",
+        "twig/twig": "1.*",
+        "twig/extensions": "*"
+    },
+    "autoload": {
+        "psr-0": { "Fusioneer": "src/" }
+    }
+}
